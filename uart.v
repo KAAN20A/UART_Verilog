@@ -1,10 +1,10 @@
 module baudrate_generator(
     input clk,
     input reset,
-    input [1:0] baud_sel,  // 00=9600, 01=19200, 10=38400, 11=115200
+    input [1:0] baud_sel, 
     output reg baud_tick
 );
-    // 8 MHz clock için sayma değerleri:
+  
     localparam DIV_9600   = 833;   // 8MHz/9600
     localparam DIV_19200  = 417;   // 8MHz/19200
     localparam DIV_38400  = 208;   // 8MHz/38400
@@ -13,7 +13,7 @@ module baudrate_generator(
     reg [15:0] counter;
     reg [15:0] limit;
 
-    // switch ile seçilen baudrate’e göre limit ayarı
+    
     always @(*) begin
         case (baud_sel)
             2'b00: limit = DIV_9600;
